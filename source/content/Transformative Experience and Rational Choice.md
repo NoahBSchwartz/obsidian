@@ -1,0 +1,4 @@
+- The normal probability tables we were using are great except with transformative experiences
+	- Epistemically Transformative: you'll learn something you wouldn't have otherwise learned (you might understand how vampires might feel but you don't KNOW how they feel)
+	- Personally Transformative: the experience changes you in some deep way
+- 

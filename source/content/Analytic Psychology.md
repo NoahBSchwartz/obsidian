@@ -1,0 +1,10 @@
+- Carl Jung: Followed Freud but eventually turned against him. Did even more with unconscious than Freud did
+	- Individuation - The process of integrating the conscious and the unconscious to become a psychologically whole person. Jung's ultimate goal of personal development.
+	- Complexes - Groups of repressed ideas and feelings that form autonomous units within the unconscious mind. They can influence behavior and cause neuroses if not made conscious.
+	- Persona - The social mask or facade we present to the world to fit in that often conceals our true self.
+	- Shadow - The dark, rejected, or unknown aspects of our personality that we try to suppress or deny. Confronting the shadow is necessary for individuation.
+	- Anima/Animus - The contrasexual archetype; the anima is the feminine image in a man's psyche, the animus is the masculine image in a woman's psyche. Needed to achieve wholeness.
+	- Synchronicity - Meaningful coincidences that reveal connections between the psyche and the external world. Suggests the psyche cannot be completely confined to the brain.
+- Personal Unconscious: Each individual's unique experiences and repressed memories and wishes 
+- Collective Unconscious: Portion of the psyche based on the collective experiences of all humans
+	- Archetypes: "Universal thought forms" found in art, dreams, religion, mythology (recurring themes throughout history)

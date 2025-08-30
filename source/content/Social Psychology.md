@@ -1,0 +1,34 @@
+- Scientific study of how people's thoughts, feelings, and behaviors are influenced by other people and situations (don't care about personality, just situations)
+- Prosocial Behavior
+	- An act (possibly involving risk or sacrifice) that benefits or has positive social value
+	- Case of Catherine "Kitty" Genovese. In March 1964 in Queens NY, she was assaulted and murdered in a neighborhood. The fact that there were so many people who saw it but did nothing, led  Latane and Darley to create the field of social psychology
+	- Bystander Effect: as the number of bystanders increases, the less help the group is willing to give
+		- Evaluation apprehension: people don't want to be judged for helping (this is the cause of the effect)
+		- Diffusion of Responsibility: responsibility gets spread out among group (so individuals don't feel like they need to do anything)
+		- One of the ways they could test this is by filling a room with fake smoke (titanium dioxide) and seeing how long people took to react when in a group vs on their own
+	- Ally Effect: inhibiting the bystander effect. When one person from a group steps up, many others will too
+	- Costs of Helping Behavior
+		- Fear of trouble or danger
+		- Fear of seeming foolish 
+		- Reluctance to make contact with an "unpleasant" victim
+- Aggression: behavior intended to harm or anger another live recipient who is motivated to avoid such treatment (on exam)
+	- Aggression is a behavior (not emotion, need, motive, belief, or attitude)(there's no such thing as an aggressive thought)
+	- Must have intent to harm live recipient (punching wall isn't aggression)
+	- Victim must be trying to avoid the aggression (so sports isn't aggression
+- Compliance: change in accordance with direct request
+	- Ingratiation: compliance through flattery
+	- Multiple Requests and Compliance: he found that making multiple requests can make people comply more
+	- Foot-in-the-Door Method: make a small request first, then follow it with a large request
+		- Snowball effect to increase the momentum of saying yes
+		- Makes the customer feel like they're progressively "helping" out the salesman
+	- Door-in-the-Face Method: make a large request, have request rejected, and then counter with a small request
+		- Reciprocal concessions: feeling of bargaining and compromise
+		- Works because people don't want to feel like they're unable to compromise
+	- Low-Ball Method: get person to make a commitment then increase the cost of the commitment
+- Conformity: Change in one's behavior or attitudes to adhere to widely accepted standards or beliefs
+	- Types of Conformity
+		- Public Compliance: To act in a manner consistent with the group's behavior
+		- Private Acceptance: Changing a pre-existing attitude
+	- Group Pressure Study (Solomon Asch, 1957)
+		- Confederate: individual who appears to be a participant but is actually aware of the goal of the experiment
+		- Showed that someone could be made to pick the wrong line if a bunch of other people in a group also picked the line

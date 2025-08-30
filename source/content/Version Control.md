@@ -1,0 +1,4 @@
+- 2 Different kinds![[Screenshot 2024-01-24 at 11.54.09 AM.png]]
+	- Centralized: bad because all updates to repository code update every persons copy of the code (easy to accidentally commit erroneous code)
+	- Distributed: more popular because its safer (everyone has their own repo)
+		- Make all changes in personal repository, git pull to ensure your changes are up to date, and then push them to the real repository

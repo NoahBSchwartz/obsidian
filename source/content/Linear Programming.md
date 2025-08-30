@@ -1,0 +1,2 @@
+Objective Function: the metric we're trying to maximize or minimize, the equation for this is the sum of all the factors that go into effecting the objective function
+Constraints: All the limits on the factors that effect the objective function (and how the factors are inter-related)

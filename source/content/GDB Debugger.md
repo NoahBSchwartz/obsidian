@@ -1,0 +1,35 @@
+Pause program at any place, inspect variables at places, hunt for run-time errors like segmentation faults: 
+- Run the program: `run`
+- View code with gui: `tui enable`, `ctrl l` to reload display 
+	- If not using gui, you can always `list` to see info
+- Set program to display a variable whenever run: `display x`
+- Make a breakpoint at line 10: `break my_program.c:10`
+	Make a breakpoint at function main: `break main`
+	- Continuing
+		- Continue to next break point (or end of function): `cont`
+		- Finish the current function and then stop: `finish`
+		- Execute code line by line: `next` (but will execute functions in a single step)
+			- Go into a function and execute it line by line: `step`
+	- Get Info on break points: `info breakpoints`
+		- Delete 1st breakpoint: `del 1` 
+		- Look at the flow to get to point: `where`
+		-  Print variable: `print x` 
+			- Use `print/t x` for binary `print/x x` for hex
+			- Complex: `print strlen(x[2]) + y[1] - 5`
+			- Print address of x: `print/x &(int_full[2])`
+		- Print info at an address: `x 0x60180a`
+		- Set variable: `set x = 5`
+- Assembly: `layout asm`
+	- Make GDB always print next instruction: `display/i $rip`
+	- Print info at an address: `x 0x60180a`
+	- Print instruction stored in register: `x/i $pc`
+		- Print the next 20 instructions: `x/20i $pc`
+	- Print value stored in register: `print $edx`
+	- Print info on all registers: `info registers` (gives 2 columns, one with integer values and one with hex)
+	- Print all assembly code for a certain function: `disassemble function_one`
+		- Step through assembly lines:  `nexti` (surface level)
+			Things like `print` will be executed instead of showing the inside code in detail
+		- Step through assembly instruction: `stepi` (granular)
+	- Set register value: `set $esi = 0x12a3ae2`
+- Stop the program: `kill`
+- Quit gdb: `quit`

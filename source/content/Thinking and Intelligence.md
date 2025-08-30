@@ -1,0 +1,8 @@
+- Thinking: the mental manipulation of analogical and symbolic representations 
+- Analogical Representations: mental representations that have some of the visible characteristics of objects (ie. a phone icon in place for a real phone)
+- Symbolic Representations: Abstract mental representations that consist of words or ideas
+- Schemas: Mental structures (collections of ideas, prior knowledge, and experience) that help organize and guide thought and behavior
+	- Help reduce brain processing time by finding similarities between situations
+- Concepts: Mental representations used to categorize related objects, events, or ideas
+- Prototype Model: the most typical member of a certain category (what you think of when you hear the word dog)
+- Exemplar Model: each category has many examples which when combined form the full category 

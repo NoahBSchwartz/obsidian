@@ -1,0 +1,6 @@
+- Cache Memories (caches): stores small amounts of data so that future requests for that data can be served faster (tradeoff is that it can't store a lot of data)
+	- Takes advantage of locality, the tendency for programs to access data and code in localized regions
+		- By setting up many little caches for the things that need to be done quickest
+- Memory Hierarchy: top to bottom-> devices become slower, larger, cheaper
+	- Inserting a smaller, faster storage device (e.g., cache memory) between the processor and a larger, slower device (e.g., main memory)
+	- Storage at one level serves as cache for storage at the next lower level

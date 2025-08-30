@@ -1,0 +1,9 @@
+- Has your child died? It is restored
+- Achieving inner tranquility is a higher priority than material concerns
+- It is not easy to keep your will in harmony with nature and to secure externals
+- Don't desire things, just wait for them to come to you
+- Your only desire should be to be free, and this will happen by not caring about externals
+- Like an ape you mimic all you see, and one thing after another is sure to please you, but is out of favor as soon as it becomes familiar. For you have never entered upon anything considerately
+- Provide things relating to the body no further than absolute need requires, as meat, drink, clothing, house, retinue. But cut off everything that looks toward show and luxury.
+- Bring to your mind both points of time—that in which you shall enjoy the pleasure, and that in which you will repent and reproach yourself, after you have enjoyed it—and set before you, in opposition to these, how you will rejoice and applaud yourself if you abstain
+- 

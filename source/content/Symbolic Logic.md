@@ -1,0 +1,5 @@
+- Not: `¬P = ~P`
+- And: `A ∧ B = A&B`
+- Or: `p | q = p | q`
+- Exclusive Or: `p ⊕ q = p ^ q`
+- 

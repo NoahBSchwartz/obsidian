@@ -1,0 +1,12 @@
+1. The first example of manual Mechanistic Anomaly Detection! They find circuits in the model that lead to an answer and then detect when something is weird in these circuits [[On the Biology of a Large Language Model]]
+2. [[Can a Bayesian Oracle Prevent Harm from an Agent?]]
+3. [[Concrete Methods for Heuristic Estimation on Neural Networks]]
+4. [[Expectation Propagation for Approximate Bayesian Inference]]
+5. [[Isserlis's Theorem (Wick's Theorem)]]
+6. [[Reasoning about Uncertainties in Discrete-Time Dynamical Systems using Polynomial Forms (Sriram)]]
+7. [[Sparse Autoencoder (SAE)]]
+8. [[Sparse Crosscoders for Cross-Layer Features and Model Diffing]]
+9. [[An Analytic Solution to Covariance Propagation in Neural Networks]]
+10. [[Current Plan]]
+11. [[Literature Review]]
+#main

@@ -1,0 +1,48 @@
+- An individual's distinctive and consistent pattern of thinking, feeling, and behaving
+- Nomothetic Approach: analysis of personality characteristics according to universal norms or traits of a group (ie. the Big 5, the DSM)
+- Idiographic Approach: examination of individual behavior and case studies rather than group categories (ie. looking at one serial killer to find pattern in victims)
+# Psychodynamic Theory (Sigmund Freud)
+### Structure
+- Behavior and cognition arise from unconscious drives and impulses that stem from childhood conflict
+	- Freud studies deeper than the surface, deeper than most psychologists
+- Structure of the Mind (Psyche)
+	- Id: Personality component containing a reservoir of irrational, unconscious energy 
+		- Pleasure Principle: the Id only wants pleasure and it only wants to live in the moment 
+		- Libido: the energy that promotes pleasure seeking and acts on impulses and desires
+	- Ego: Rational component that mediates between the Id and society
+		- Reality Principle: the ego has to work to make the Id realistic 
+		- Ego and Civilization: the ego is the part that allows societies to work (if the Id were on it's own, there would be chaos)
+	- Superego: irrational component that drives a person toward perfection. Acts on a break on the id. It is a rigid structure of morality and conscience
+		- Morality Principle: the superego tells you what you should be doing (people who are there own worst enemies have strong superegos)
+		- Ego Ideal: you have to be the best at everything you do
+	- Preconscious: where most information is stored before you pull it out
+- Eros is the drive of life, love, creativity, and sexuality, self-satisfaction, and species preservation. Thanatos, from the Greek word for "death" is the drive of aggression, sadism, destruction, violence, and death 
+- Neurosis: imbalance of power in the mind (leading to anxiety)
+	- Objective Anxiety: objective threat from external world
+	- Neurotic Anxiety: id dominated (paranoia)
+	- Moral Anxiety: superego dominates ego (shame or guilt)
+### Understanding the Structure
+- Ego Defense Mechanism: strategies to reduce neurotic and moral anxiety (all of these are repressed, you can see them in other people but not yourself)
+	- Repression: holding of traumatic memories in the unconscious rather than in the conscious mind
+	- Denial: Refusing to acknowledge source of anxiety
+	- Displacement: Transfer anxiety from a threatening object to a non-threatening object
+	- Sublimation: conversion of a sexual goal into a non-sexual goal
+	- Projection: attribution of personal anxiety to other people or situations (you're cheating so you accuse your partner of cheating)
+	- Identification: avoid anxiety by relating to significant impressive role models (wearing same clothes as your favorite athlete)
+	- Rationalization: attempt to "explain away" anxiety by providing logical but false reasons for shortcomings (if you don't get an A you talk about how it's not important)
+	- Narcissism: reduce anxiety of self-doubt by excessive self love
+	- Reaction Formation: converting an undesirable impulse into an opposite behavior (homophobic politician ends up being gay)
+- Karen Horny rebelled against Freud and discussed womb envy
+- Psychoanalysis: Psychotherapy designed to "make the unconscious conscious"
+	- Free association: Patient reports everything that comes to mind (no matter how trivial or embarrassing)
+	- Published Interpretation of Dreams (1900)
+		- Old Way: Manifest content (the censored version of the dream)
+		- Freud's Way: Latent content (the symbolic repressed meaning of dream)
+	- Slips of the tongue: Verbal "mistakes" that contain symbolic wish fulfillment
+	- Jokes and Humor: Jokes contain repressed tensions or desires
+- Projective Tests: Unconscious is revealed in patient's interpretation of ambiguous, unstructured material. Freud didn't create these tests but inspired them
+	- Rorschach Diagnostic Inkblot Test: what you see from a smashed ink blob shows your unconscious thoughts
+	- Henry Murray: Thematic Apperception Test (TAT) trying to find unconscious themes at conscious level. Show person an image and ask them to tell you a story about it
+- Contemporary work: called neo-fruedians, they focus on social interactions
+	- Object relations theory: According to this theory, your mind and sense of self develop in relation to others (“objects”) in your environment, and how you relate to these others shapes your personality.
+See [[Humanistic Psychology]], [[Hans Eysenck]], 
