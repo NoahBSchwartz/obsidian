@@ -45,3 +45,4 @@ export {
   Breadcrumbs,
   Comments,
 }
+export { default as LandingGraph } from "./LandingGraph"
