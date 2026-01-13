@@ -68,7 +68,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:#main",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -199,7 +199,9 @@
   },
   "active": "3c0363a9114d5b82",
   "lastOpenFiles": [
+    "final_robotics_project.md",
     "index.md",
+    "Untitled 2.base",
     "Alignment Strategies of Frontier Labs.md",
     "(1) NLProlog Reasoning with Weak Unification for Question Answering in Natural Language (2019).md",
     "(2) Harnessing Deep Neural Networks with Logic Rules (2016).md",
@@ -215,7 +217,6 @@
     "905410",
     "905410.jpg",
     "1006369",
-    "1006375",
     "687474703a2f2f7777772e6373652e756e73772e6564752e61752f7e62696c6c772f4a757374736561726368312e676966 1.gif",
     "687474703a2f2f7777772e6373652e756e73772e6564752e61752f7e62696c6c772f4a757374736561726368312e676966.gif",
     "A New Approach Based on Interval Analysis and B-splines Properties for Solving Bivariate Nonlinear Equations Systems.md",
@@ -237,7 +238,6 @@
     "Brain Structures.md",
     "Brexit.md",
     "C code to Assembly.md",
-    "C Exceptions.md",
     "Hexadecimal-To-Binary-Conversion-Table 1.jpg",
     "Hexadecimal-To-Binary-Conversion-Table.jpg",
     "IMG_0097.png",
