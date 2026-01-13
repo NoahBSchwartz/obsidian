@@ -4,31 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "9fa6fcde7af497a8",
+        "id": "95b5cbfa06511082",
         "type": "tabs",
         "children": [
           {
-            "id": "22303a1769d2b569",
+            "id": "b878a4985290f9e4",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
-            }
-          },
-          {
-            "id": "f2b0d581f20cfb98",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "type": "markdown",
+              "state": {
+                "file": "Alignment Strategies of Frontier Labs.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Alignment Strategies of Frontier Labs"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -60,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "anthropic",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -189,7 +182,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "f2b0d581f20cfb98",
+  "active": "b878a4985290f9e4",
   "lastOpenFiles": [
     "(1) NLProlog Reasoning with Weak Unification for Question Answering in Natural Language (2019).md",
     "(2) Harnessing Deep Neural Networks with Logic Rules (2016).md",
