@@ -1,5 +1,5 @@
 Structured Query Language
-1. Initialize in terminal: `psql postgres -U postgres`
+1. Initialize in terminal: `sql postgres -U postgres`
 2. Create a table
 ```
 CREATE TABLE students(

@@ -1,0 +1,220 @@
+Saas = Software as a service
+Paas = Platform as a service (Azure, Render) gives whole infrastructure to deploy website
+Iaas = Infrastructure as a service: hardware provided but you need to decide OS, middleware...
+Need to know all commands that you used in docker (need to know about docker compose.yaml)
+What kind of typing does Javascript use for its variables (Dynamic, don't specify type when declaring variable `let`)
+In the context of Agile, what does the phrase "Definition of Done", with respect to a user story, refer to?  (The acceptance criteria that a user story must be met to be considered complete.)
+Product backlog has all epics and all user stories you need to eventually build
+Sprint backlogs are all tasks you need to preform in a given week (aka sprint cycle)
+Non-Functional Requirements: Requirements from developer's perspective (how you do something)
+Functional Requirements: Requirements from business perspective, all the functionality you need (what you need to do)
+![[Screenshot 2024-05-01 at 11.57.58 AM.png]]
+- (Bought, Dough, Wrought are in REGEX).      (Straight, bought are not in REGEX)
+For JSON, if there's a square bracket you need to provide an index. If there's a curly brace, use a dot
+![[Screenshot 2024-05-01 at 12.04.40 PM.png]]
+- `employees[1].lastName` works
+Post is used for creating resources. Put is used for updating resources. Get is used to fetch existing resource
+400: Resource Not Found, 300: redirect, 500: internal server errors 
+### Front End
+- HTML and CSS
+	- `id = "xxxx"` to label tags, `class="classname"`: ties it into a group for style, `style="xxxxx"`: xxx list of style elements
+```html
+<html>  
+	<head> 
+	    <style type="text/css">
+        h1 {  
+            color: black; 
+        }
+        #specialParagraph {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+    //or include external reference:
+	<link rel="stylesheet" href="./resources/css/style.css" />
+	</head>  
+	<body>  
+		<img src="https://images.pexels.com/photos/1805164/pexels-photo-1805164.jpeg" alt="An image of a dog" width="220px" />
+		<a href="https://www.google.com">Google</a> <br>
+		 <h1>Welcome to My Website</h1>
+		 <p id="specialParagraph">This has style. </p>
+	</body>  
+</html>
+```
+- Javascript: modify, create, delete HTML and CSS with tags (Event-Driven: Function runs when events trigger it)
+	- `<script>`  can be declared either within the head or the body (including in head could slow loading of page down). Use `async` to load elements in parallel that don't matter to webpage (ie.  advertisements). Use `defer` to load elements in parallel that do matter to webpage (ie. pictures)
+	 - Event Handlers: Dictates the actions that follow events. Events "bubble upwards" so if button is in box on website and the user clicks, the whole website will register click
+ ```HTML
+<html>  
+  <body>  
+  //change HTML using get element
+	<h1 onclick="alert('You clicked this heading');"> Click Here! </h1>
+	<p id="demo"> </p>
+	//use html to call a function
+	<div onmouseover="mOver(this);" onmouseout="mOut(this);" style="background-color:yellow; height:20px; padding:40px;">
+	<script> //anything within script auto-executes
+	  document.getElementById("demo").innerHTML="."; //getElementByID is method, .innerHTML is property
+	  document.getElementById("demo").backgroundColor = "blue"; //change CSS
+	  function mOver(obj) {
+        obj.innerHTML = "Moused Over";
+      }
+      //create HTML 
+      var newDiv = document.createElement('div');
+	  var newAnchor = document.createElement('a');
+	  newDiv.append(newAnchor); //Helps you add content to an HTML element
+	  document.body.appendChild(paragraph);//add HTML element to another HTML element
+	</script>  
+  </body>  
+</html>  
+//or include an external js sheet
+<html>
+	<head>
+		<script src="./resources/js/script.js"></script>
+	</head>
+</html>
+```
+- JQuery: Javascript library which lets you write things short
+```js
+//now buttons can be defined and used in 1 line
+(“button”).click(function(){alert(‘button clicked’);})
+```
+- Callback Function: a function passed into another function as an argument. Important for things like API calls where things need to happen asynchronously but also happen in right order
+	- Higher-Order Function: the outside function which accepts the callback function
+	- `setTimeout`: offloads a task for the browser to process
+### Back End
+NodeJS can: create HTML on the fly, manipulate files on the server, process form data, manipulate DB, has multiple threads
+```js
+//WebPage Code
+<form action="http://URL"> //url is name of script on server
+<form method="GET"> //sends small amount of data
+<form method="POST"> //sends lot of data with security
+<form action="localhost:<PORT_NUMBER>/getRecipeById?recipeID=1"> //call function /getRecipeById and pass recipeID = 1 in
+//Server Code
+const dbConfig = {
+	host: 'localhost',
+	port: 5432,
+	database: 'recipes_db',
+	user: 'postgres',
+	password: 'pwd'
+};
+const db = pgp(dbConfig);
+app.get('/', function(req,res){ //default functions, always runs when page loads
+	res.send('<h1>Hello World<h1>');
+})
+app.get('/getRecipeById', (req, res) => { //when /getRecipeById is called, run function
+    let rId = req.query.id; //read data in the request
+    let query = `SELECT * FROM recipes WHERE recipeId = ${rId};`;
+    db.any(query)
+    .then((rows) => {
+        res.send(rows); //send the response from the database back to the client
+    })
+});
+```
+```js
+app.get('/getRecipeByName/:name', (req,res) => { } //use :name as another way to pass value (ie. localhost:<PORT_NUMBER>/getRecipeByName/tirimisu)
+app.post('/users', (req, res) => {} //Used to create new resources on the server. Like creating new user in database
+app.put('/users/:id', (req, res) => {}//Used for updating existing resources
+```
+- Handelbar: insert dynamic content into webpage (if apple typed into search bar, only images of apples are shown). Syntax: `{{> myPartial}}`
+```html
+//resources/css/style.css
+<div class="container">
+	<h1>{{message}}<h1>
+```
+```js
+const hbs = handlebars.create({...});
+app.get('/getRecipeByName/:name', (req,res) => { 
+	//res.send is for static data, instead use:
+	{{> head.hbs}}
+	res.render(`pages/home`,{
+		my_title: "Home",
+		stylesheet : "../resources/css/style.css"
+		message : "Welcome to this demo"
+	}
+}
+//head.hbs 
+{{#each data}} //equivalent to using a for loop to print array when rendering
+	<tr>
+		<td>{{recipe}}</td>
+		<td>{{times}}</td>
+	</tr>
+{{/each}}
+{{#if first_name}}
+	<title> {{first_name}} - CSCI 
+	3308 Lab 7 </title>
+	{{else}}
+	<title> CSCI 3308 Lab 7 </title>
+{{/if}}
+  ```
+### Databases 
+  - ACID: Atomicity (if data moved from one place but doesn't get put in another place, the transaction reverses), Consistency (different rows should always agree), Isolation: (transactions occur independently you may not see most updated values), Durability: Once a transaction occurs, it will be permanently locked in
+- Searching Through Database: use primary key
+	- Composite Key: consists of two or more columns (ie. Noah, Comp Sci)
+	- Primary Key: the main way of identifying rows. There can be only one primary key. Can be composite for more specificity 
+		- Alternate Key (AK): other keys that could be primary keys if needed
+	- Surrogate Key: artificial column added to a relational database to act as primary key (for increased efficiency)
+	- Foreign Key: key of one relation that is placed in another relation to form a link between relations
+		- Referential Integrity Constraint: limits the values of the foreign key to those existing in primary key (of relation `#1`
+- SQL
+	- NOT NULL: requires that a field be set when a new entry is added to the table.
+	- SERIAL: creates an auto-increment that is managed by the database. Each time a new entry is added to the table, the SERIAL column is set and the value is incremented by 1
+	-  VARCHAR(#): A variable-length character string, where # defines the maximum number of characters
+	- TEXT: similiar to the VARCHAR(#) data type, but removes the character limit
+```
+CREATE TABLE students(
+	studentId BIGINT PRIMARY KEY,
+	first_name VARCHAR(50) NOT NULL,
+);
+INSERT INTO mytable(val1,val2,str3) VALUES (1,2,'hi'), (3,4,'yo'), (5,6,'wow')
+
+// Add up all units which match category_id
+SELECT category_id, SUM(units_in_stock)
+FROM products
+GROUP BY category_id;
+HAVING SUM(units_in_stock) > 100; //filter sums
+
+SELECT p.name, COUNT(m.id)
+FROM platforms p
+JOIN movies m ON p.id = m.platform_id
+GROUP BY p.id
+ORDER BY COUNT(m.id) DESC
+LIMIT 1;
+
+//update
+UPDATE movies
+SET platform_id = (
+	SELECT id
+	FROM platforms
+	WHERE name = 'Netflix'
+)
+WHERE year_of_release = 2004;
+
+ALTER TABLE table_name  
+ADD COLUMN new_column_name data_type constraint;
+
+//inner join
+SELECT  
+	employee.name,  
+	salary.current_salary  
+FROM  
+	employee  
+	INNER JOIN salary
+		ON employee.id = salary.employee_id;
+```
+### Git Stuff
+- Regex: `(^CSCI [0-9][0-9][0-9][1,3,5,7,9])` this gets all odd numbered courses ie. 1003, 2935...
+- Clear terminal: `clear`, Go back a directory: `cd ..` (to go back multiple: `cd ../../..`), To relocate a file: `mv ./folder1/sample.txt ../folder2`, Search for a phrase in file: `grep "test" file.txt`,  Change file permission to make it executable: `chmod +x file.sh` 
+- Piping: if you want to pass output of one command to another command ie. `grep "test" file.txt | tee output.txt` (tee is write command)
+  - Print contents of file: `cat file.cpp`, Print head of file: `head`, Print tail of file: `tail`
+	- Write to file: `echo "Hello World" > sample.txt` (overwrites), Append to file: `echo "Hello World" >> sample.txt`
+- Vim: another way to modify file. Create file: `vi sample.txt`, When in file, press `i` to start typing (press esc to exit insert mode), Exit file: `:q` or `:wq` (write and quit to save file before exiting) 
+- Docker: `docker compose down -v` (end docker and remove volumes)
+- `docker compose up -d`
+- See all Containers: `docker ps -a` See Running Containers: `docker ps` Remove Containers: `docker rm hello_world_container`
+- Run an image interactively: `docker run -it ubuntu` To exit: `exit`
+- View all running instances: `docker compose ps`
+
+- `git rebase`: when there are changes in main that we want to reflect and bring our branch to the same state as main
+- `git fetch`: pulls all new branches from main so they can be in local repo, `git checkout`: navigate between branches created by fetch
+- `git rm`: remove files that have been staged for commit but are no longer needed, `git rm --cached` (will only remove from staging area)
+- `git stash`: store/save your current changes safely in one place so that you can work on something else and come back to project `git stash -u:` stashes untracked

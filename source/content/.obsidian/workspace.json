@@ -4,35 +4,27 @@
     "type": "split",
     "children": [
       {
-        "id": "0571c1c94d829fac",
+        "id": "9fa6fcde7af497a8",
         "type": "tabs",
         "children": [
           {
-            "id": "47ef711f7e8c1d64",
+            "id": "22303a1769d2b569",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "index.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "index"
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
             }
           },
           {
-            "id": "2d8837e6263008e3",
+            "id": "f2b0d581f20cfb98",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "index.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "index"
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
             }
           }
         ],
@@ -89,7 +81,8 @@
               "title": "Bookmarks"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -165,8 +158,19 @@
               "icon": "lucide-list",
               "title": "Outline of index"
             }
+          },
+          {
+            "id": "20f790244a504cd2",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -185,53 +189,53 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "2d8837e6263008e3",
+  "active": "f2b0d581f20cfb98",
   "lastOpenFiles": [
-    "index.md",
-    "Women's Role in Legal History.md",
-    "Virtual Machines vs Containers.md",
-    "Version Control.md",
-    "Verifying Komolgorov Arnold Networks.md",
-    "Vector Spaces.md",
-    "Untitled.base",
-    "Types of Encodings (and Casting).md",
-    "Truth-Functional Logic (TFL).md",
-    "Truth Tables.md",
-    "Trie (Dictionary).md",
-    "Transition to Democracy (Parliamentary Monarchy) 1975-1978.md",
-    "Transformative Experience and Rational Choice.md",
-    "Thinking and Intelligence.md",
-    "THE PROOF OF KOLMOGOROV-ARNOLD MAY ILLUMINATE NN LEARNING.md",
-    "The Problem of Induction.md",
-    "The Legal System of Medieval Society 476-1492 AD.md",
-    "The Fundamental Limits of Interval Arithmetic for Neural Networks (2021).md",
-    "Terminal Commands.md",
-    "Takeaways.md",
-    "Symbolic Logic.md",
-    "Statistics.md",
-    "Statistics Test Notes.md",
-    "SQL.md",
-    "sql-table-joins-c678ba9d2b805bd8a2589a111582dde3.png",
-    "Sparse Crosscoders for Cross-Layer Features and Model Diffing.md",
-    "Sparse Autoencoder (SAE).md",
-    "Spanish Wellfare State.md",
-    "Screenshot 2025-08-06 at 7.23.28 PM.png",
-    "Screenshot 2025-06-16 at 10.58.21 AM.png",
-    "Screenshot 2025-04-30 at 12.12.01 PM.png",
-    "Screenshot 2025-04-30 at 11.57.50 AM.png",
-    "Screenshot 2025-04-23 at 12.03.40 PM.png",
-    "Screenshot 2025-04-23 at 11.42.32 AM.png",
-    "Screenshot 2025-04-23 at 11.37.54 AM.png",
-    "Screenshot 2025-04-23 at 11.37.54 AM 1.png",
-    "Screenshot 2025-04-23 at 11.36.57 AM.png",
-    "Proposals.docx",
-    "Pandas_Cheat_Sheet.pdf",
-    "Pandas_Cheat_Sheet 2.pdf",
-    "Pandas_Cheat_Sheet 1.pdf",
-    "latexsheet.pdf",
-    "IMG_2860.heic",
-    "IMG_2860 1.heic",
-    "IMG_2799 2.heic",
-    "IMG_1959.heic"
+    "(1) NLProlog Reasoning with Weak Unification for Question Answering in Natural Language (2019).md",
+    "(2) Harnessing Deep Neural Networks with Logic Rules (2016).md",
+    "(3) Augmenting Neural Networks with First-order Logic (2019).md",
+    "(Trial 1) An Investigation of Noise in Morphological Inflection.md",
+    "90166",
+    "100426",
+    "113091",
+    "180401",
+    "239703",
+    "246639",
+    "730925",
+    "905410",
+    "905410.jpg",
+    "1006369",
+    "1006375",
+    "687474703a2f2f7777772e6373652e756e73772e6564752e61752f7e62696c6c772f4a757374736561726368312e676966 1.gif",
+    "687474703a2f2f7777772e6373652e756e73772e6564752e61752f7e62696c6c772f4a757374736561726368312e676966.gif",
+    "A New Approach Based on Interval Analysis and B-splines Properties for Solving Bivariate Nonlinear Equations Systems.md",
+    "Actuators.md",
+    "AGILE Development.md",
+    "AI Interpretability.md",
+    "Algorithms.md",
+    "Alignment Strategies of Frontier Labs.md",
+    "American Apartheid Segregation and the Making of the American Underclass.md",
+    "An Analytic Solution to Covariance Propagation in Neural Networks.md",
+    "An Introduction to Affine Arithmetic.md",
+    "Analytic Psychology.md",
+    "Analyzing the Effectiveness of Large Language Models on Text-to-SQL Synthesis.md",
+    "Architecture and Assembly.md",
+    "Arguments.md",
+    "Automation Control.md",
+    "Back End (NodeJS).md",
+    "Backpropagation.md",
+    "Binary Heap.md",
+    "Brain Structures.md",
+    "Brexit.md",
+    "C code to Assembly.md",
+    "C Exceptions.md",
+    "C++ Classes.md",
+    "Hexadecimal-To-Binary-Conversion-Table 1.jpg",
+    "Hexadecimal-To-Binary-Conversion-Table.jpg",
+    "IMG_0097.png",
+    "IMG_1852.jpg",
+    "IMG_1923.jpg",
+    "IMG_1924.jpg",
+    "IMG_1958.jpg"
   ]
 }

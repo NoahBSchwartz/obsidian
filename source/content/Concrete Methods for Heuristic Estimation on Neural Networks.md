@@ -116,4 +116,4 @@ Note: to scale activation modeling, we could get distributions of SAE's ([[Spars
 # Fundamental Question
 - Does this post solve the problem of finding a heuristic estimator that rejects incorrect arguments? Does it give a concrete approach for learning arguments? Ig we use the covaraince matrices but then what?
 - Look at the comments on this post: https://www.lesswrong.com/posts/SyeQjjBoEC48MvnQC/formal-verification-heuristic-explanations-and-surprise to see if surprise accounting has been used correctly here
-- I think it's possible that the covariance matrix isn't giving us enough information. What if instead of a covariance matrix we used affine arithmetic ([[An Introduction to Affine Arithmetic]]) instead? Then we could show precisely how each variable is correlated instead of just saying that they're correlated
+- I think it's possible that the covariance matrix isn't giving us enough information. What if instead of a covariance matrix we used affine arithmetic ([[An Introduction to Affine Arithmetic]]) instead? Then we could show precisely how each variable is correlated instead of just saying that they're correlated`

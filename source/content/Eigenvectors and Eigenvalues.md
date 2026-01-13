@@ -1,3 +1,4 @@
+If you ever see someone take an eigenvector/eigevalue, immediately think of transformations and PCA ([[Feature Selection and Transformation]])
 - Eigenvectors: When a transformation occurs, most vectors from OG space will change angles (be knocked off their span) but some vectors lay on special lines where they won't change angles
 	- Eigenvalues: the factor that these special vectors are stretched or squished by![[Screenshot 2024-08-12 at 12.44.12 PM.png]]
 		Note: negative eigenvalue just means vector gets flipped and then stretched

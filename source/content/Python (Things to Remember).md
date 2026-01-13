@@ -37,3 +37,18 @@ dir(my_list) #See all attributes and methods associated with an object
 [[Jupyter Notebook]]
 [[Numpy]]
 [[Pandas]]
+```python
+import csv
+import numpy as np
+import matplotlib.pyplot as plt
+def read_csv(filename):
+    with open(filename, newline='') as csvfile:
+        reader = csv.reader(csvfile)
+        data = []
+        for row in reader:
+	        data.append(row[0])
+    return data
+neg_data = read_csv('HW4_Q3_neg.csv')
+fig, axes = plt.subplots(1, 1, figsize=(12, 10))
+axes.hist(np.array(neg_data), bins=30, edgecolor='black', alpha=0.7)
+```

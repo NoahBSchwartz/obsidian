@@ -1,0 +1,18 @@
+- Analyzing the Effectiveness of Large Language Models on Text-to-SQL Synthesis
+	- SQL paper mainly deals with prompting strategies
+	- error driven correction
+	- example driven correction
+- Will I only be exploring prompting strategies or will i get to dive into other things like reinforcement learning
+- FORMAL CONTROLLER SYNTHESIS FOR CONTINUOUS-SPACE MDPS VIA MODEL-FREE REINFORCEMENT LEARNING
+	- New method in reinforcement learning designed to help solve problems in environments where the conditions can continuously change
+	- RL usually only works well for systems with a limited number of discrete states
+	- They treat the system as if it were simpler without actually changing it
+	- Making rewards more frequent and informative can help the learning process
+- Good for MDP's automota
+- Your work seems based around systems conflicting with eachother
+	- Paper 1: deals with computers that need to communicate and authenticate eachother. IF they all share a state this can be done more efficiently
+	- Paper 2: deals with conflicts in writing to databases, they need to be consisten but if the consistency is relaxed there a re pros 
+		- develop new programming language abstractions, program logics, verification techniques etc. to allow programmers to still reason precisely about the correctness of their applications even under weak isolation and consistency levels
+- Inductive synthesis algorithms employed by Scythe use various strategies, such as enumerative search, symbolic reasoning, and machine learning, to explore the space of possible programs and find one that satisfies the given constraints.
+- PATSQL also uses ML to generate Sql queries
+- 

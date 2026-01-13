@@ -1,0 +1,13 @@
+/* Color the text of the tag in Reading View */
+a.tag[href="#main"] {
+    color: white !important;
+    background-color: #882ff6 !important;
+    /* Purple */
+}
+
+/* Color the tag in Editing/Live Preview View */
+.cm-tag-main {
+    color: white !important;
+    background-color: #882ff6 !important;
+    /* Purple */
+}

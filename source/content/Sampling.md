@@ -106,3 +106,5 @@ Margin of Error: half of the Confidence Interval
 		1. Create confidence interval with 100 - a%
 		2. If the confidence interval doesn't contain the null hypothesis, we can reject the null hypothesis 
 		3.  If the confidence interval contains the null hypothesis, we fail to reject the null hypothesis 
+# Takeaways
+1. Confidence Intervals are so useful because we know the distribution of data way more often than you might think! Ie. proportions can always have a CI because they are just binomial distributions in disguise (binary choice for numerator out of total denominator)

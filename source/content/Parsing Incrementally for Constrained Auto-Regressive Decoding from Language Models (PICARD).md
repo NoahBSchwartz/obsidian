@@ -14,4 +14,4 @@
 - Paper in comparison to others:
 
 # Applications, Extensions, Ideas
-[[Lambda Calculus]]
+[[Formal Systems]]

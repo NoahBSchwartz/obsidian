@@ -18,3 +18,7 @@ int main()
 1. Establish the base case to end the algorithm
 2. Break the problem into its smallest parts (ie. if you have an algorithm to sum up all numbers in array: `return arr[current] + sum(arr[current + 1])`)
 3. To think through program flow: keep drilling down until base case is reached. Once it's reached, climb back up the recursive ladder
+
+
+
+

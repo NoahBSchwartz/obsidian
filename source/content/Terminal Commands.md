@@ -4,6 +4,8 @@
 - Type `man <command>` to access the manual for a specific command
 # Simple Syntax 
 - Prints out all files in directory: `ls`
+- Prints all current running processes: `ps`
+	- `ps aux grep "bash"`
 - Transport to directory: `cd`
 - Clear terminal: `clear
 - Go back a directory: `cd ..` (to go back multiple: `cd ../../..`)
@@ -33,7 +35,7 @@
 	- Exit file: `:q` or `:wq` (write and quit to save file before exiting) 
 - Change file permission to make it executable: `chmod +x file.sh`
 # Virtual Environments
-- Create venv: `python3 -m venv $HOME/fprime-venv`
+- Create venv: `python3 -m venv fprime-venv`
 - Open venv: `source fprime-venv/bin/activate`
 - Close venv: `deactivate`
 # Tools

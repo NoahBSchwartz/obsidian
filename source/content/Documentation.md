@@ -1,0 +1,5 @@
+- External to Code: feature document, wiki, document repo
+- Internal to Code: comments, good coding habits (called self-documenting code)
+- What to Document: 
+	- Type of data used, how its sent between data, the source and destination, limitations of data, how code is modifying data
+- Technical Debt: if you write bad code today, it will multiply and hurt you tomorrow (caused by business pressure, lack of understanding, lack of tests, lack of documentation)
