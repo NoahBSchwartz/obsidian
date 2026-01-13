@@ -2,17 +2,16 @@ import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } fro
 import Graph from "./Graph"
 
 export default (() => {
-  // Configure the graph to be "massive" (global, high depth)
   const GraphComponent = Graph({
     localGraph: {
       drag: true,
       zoom: true,
-      depth: -1, // -1 means show all nodes (infinite depth)
+      depth: -1,
       scale: 1.1,
-      repelForce: 0.8, // Spread nodes out a bit more
+      repelForce: 1, // Increased repel force for massive graphs
       centerForce: 0.3,
       linkDistance: 40,
-      fontSize: 0.6,
+      fontSize: 0.5, // Smaller font for less clutter
       opacityScale: 1,
       showTags: true,
       removeTags: [],
@@ -23,10 +22,10 @@ export default (() => {
       zoom: true,
       depth: -1,
       scale: 1.1,
-      repelForce: 0.8,
+      repelForce: 1,
       centerForce: 0.3,
       linkDistance: 40,
-      fontSize: 0.6,
+      fontSize: 0.5,
       opacityScale: 1,
       showTags: true,
       removeTags: [],
@@ -47,14 +46,40 @@ export default (() => {
     }
   }
 
-  // Inherit the scripts and styles from the original Graph component
   LandingGraph.afterDOMLoaded = GraphComponent.afterDOMLoaded
+
+  // Custom CSS to make it full screen and hide other elements
   LandingGraph.css = GraphComponent.css + `
+    .landing-graph-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 9999;
+      background: var(--light); /* Matches your theme background */
+    }
+
     .landing-graph-container .graph {
       height: 100%;
+      display: flex;
+      flex-direction: column;
     }
+
+    /* Hide the "Graph View" title */
+    .landing-graph-container .graph h3 {
+      display: none;
+    }
+
+    /* Force the inner graph containers to fill the screen */
     .landing-graph-container .graph-outer {
-      height: 80vh; /* This makes it "massive" */
+      height: 100% !important;
+      width: 100% !important;
+    }
+    
+    #graph-container {
+      height: 100%;
+      width: 100%;
     }
   `
 
