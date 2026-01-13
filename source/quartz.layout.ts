@@ -30,7 +30,34 @@ export const defaultContentPageLayout: PageLayout = {
     Component.DesktopOnly(Component.Explorer()),
   ],
   right: [
-    Component.Graph(),
+    Component.Graph({
+      localGraph: {
+        drag: true, // Optional: lets you drag nodes around
+        zoom: true,
+        depth: 1,
+        scale: 1.1,
+        repelForce: 0.5,
+        centerForce: 0.3,
+        linkDistance: 30,
+        fontSize: 0.6,
+        opacityScale: 1,
+        removeTags: [], // You can hide tags if you want
+        showTags: true,
+      },
+      globalGraph: {
+        drag: true,
+        zoom: true,
+        depth: -1, // "-1" means show everything!
+        scale: 0.9,
+        repelForce: 0.5,
+        centerForce: 0.3,
+        linkDistance: 30,
+        fontSize: 0.6,
+        opacityScale: 1,
+        removeTags: [],
+        showTags: true,
+      },
+    }), ,
     Component.DesktopOnly(Component.TableOfContents()),
     Component.Backlinks(),
   ],
