@@ -26,7 +26,6 @@ type GraphicsInfo = {
   active: boolean
 }
 
-// 1. We added the 'isHighlighted' flag to the NodeData type
 type NodeData = {
   id: SimpleSlug
   text: string
@@ -91,16 +90,24 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
     focusOnHover,
   } = JSON.parse(graph.dataset["cfg"]!) as D3Config
 
-  // 2. Here are all the keywords pulled from your application and expanded upon
+  // Expanded keywords matching your exact obsidian notes
   const highlightKeywords = [
-    "ai safety", "alignment", "mats", "scalable oversight", "mechanistic interpretability", 
+    "ai safety", "alignment", "mats", "scalable oversight", "mechanistic interpretability",
     "sae", "probes", "dictionary learning", "cross-layer transcoders", "activation oracles",
     "activation steering", "bliss attractor", "theory of mind", "welfare", "consciousness",
     "red team", "evaluations", "white-box", "attribution graphs", "agentic", "formal verification",
     "formal methods", "adversarial robustness", "deductive synthesis", "syntax-aligned",
-    "probability theory", "singular learning theory", "statistics", "optimization", 
-    "linear algebra", "logic", "proof theory", "bayesian inference", "information theory", 
-    "kolmogorov-arnold networks", "kans", "markov chains", "deep neural networks", "advanced ml"
+    "probability theory", "singular learning theory", "statistics", "optimization",
+    "linear algebra", "logic", "proof theory", "bayesian inference", "information theory",
+    "kolmogorov-arnold networks", "kans", "markov chains", "deep neural networks", "advanced ml",
+    "interpretability", "algorithm", "backpropagation", "oracle", "explainability",
+    "machine learning", "cognitive science", "convolutional", "decision theory", "decision tree",
+    "dimensionality reduction", "double descent", "feed forward", "heuristic estimator",
+    "artificial intelligence", "perceptron", "regression", "hallucination", "lora", "qlora",
+    "natural language processing", "verification", "online learning", "decoding", "probability",
+    "dynamical system", "regularization", "rnn", "lstm", "sampling", "selective modularity",
+    "sparse autoencoder", "crosscoder", "stochastic gradient", "interval arithmetic",
+    "theoretical ml", "transformer", "math"
   ]
 
   const data: Map<SimpleSlug, ContentDetails> = new Map(
@@ -156,12 +163,11 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
     if (showTags) tags.forEach((tag) => neighbourhood.add(tag))
   }
 
-  // 3. We check if the node text includes any of your keywords
   const nodes = [...neighbourhood].map((url) => {
     const text = url.startsWith("tags/") ? "#" + url.substring(5) : (data.get(url)?.title ?? url)
     const textLower = text.toLowerCase()
     const isHighlighted = highlightKeywords.some(kw => textLower.includes(kw))
-    
+
     return {
       id: url,
       text,
@@ -169,7 +175,7 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
       isHighlighted
     }
   })
-  
+
   const graphData: { nodes: NodeData[]; links: LinkData[] } = {
     nodes,
     links: links
@@ -180,11 +186,23 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
       })),
   }
 
+  function nodeRadius(d: NodeData) {
+    const numLinks = graphData.links.filter(
+      (l) => l.source.id === d.id || l.target.id === d.id,
+    ).length
+    const base = 2 + Math.sqrt(numLinks)
+    return d.isHighlighted ? base * 1.6 : base
+  }
+
+  // Adjusted physics to reduce overlap: stronger repel force and larger collision radius for highlighted nodes
   const simulation: Simulation<NodeData, LinkData> = forceSimulation<NodeData>(graphData.nodes)
-    .force("charge", forceManyBody().strength(-100 * repelForce))
+    .force("charge", forceManyBody().strength(-150 * repelForce))
     .force("center", forceCenter().strength(centerForce))
-    .force("link", forceLink(graphData.links).distance(linkDistance))
-    .force("collide", forceCollide<NodeData>((n) => nodeRadius(n)).iterations(3))
+    .force("link", forceLink(graphData.links).distance(linkDistance * 1.2))
+    .force("collide", forceCollide<NodeData>((n) => {
+      const r = nodeRadius(n)
+      return n.isHighlighted ? r + 30 : r + 5 // Create a large "personal space bubble" for big text
+    }).iterations(3))
 
   const width = graph.offsetWidth
   const height = Math.max(graph.offsetHeight, 250)
@@ -207,13 +225,12 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
     {} as Record<(typeof cssVars)[number], string>,
   )
 
-  // 4. Color logic updated: Highlights get the --dark theme variable to stand out nicely
   const color = (d: NodeData) => {
     const isCurrent = d.id === slug
     if (isCurrent) {
       return computedStyleMap["--secondary"]
     } else if (d.isHighlighted) {
-      return computedStyleMap["--dark"] 
+      return computedStyleMap["--dark"]
     } else if (visited.has(d.id) || d.id.startsWith("tags/")) {
       return computedStyleMap["--tertiary"]
     } else {
@@ -221,20 +238,11 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
     }
   }
 
-  // 5. Radius logic updated: Highlighted nodes are multiplied by 1.6
-  function nodeRadius(d: NodeData) {
-    const numLinks = graphData.links.filter(
-      (l) => l.source.id === d.id || l.target.id === d.id,
-    ).length
-    const base = 2 + Math.sqrt(numLinks)
-    return d.isHighlighted ? base * 1.6 : base
-  }
-
   let hoveredNodeId: string | null = null
   let hoveredNeighbours: Set<string> = new Set()
   const linkRenderData: LinkRenderData[] = []
   const nodeRenderData: NodeRenderData[] = []
-  
+
   function updateHoverInfo(newHoveredId: string | null) {
     hoveredNodeId = newHoveredId
 
@@ -386,20 +394,25 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
   for (const n of graphData.nodes) {
     const nodeId = n.id
 
-    // 6. Text formatting: If highlighted, limit to 15 characters
+    // Increased character limit slightly for better context
     let displayTitle = n.text
-    if (n.isHighlighted && displayTitle.length > 15) {
-      displayTitle = displayTitle.substring(0, 15) + "..."
+    if (n.isHighlighted && displayTitle.length > 25) {
+      displayTitle = displayTitle.substring(0, 25) + "..."
     }
+
+    // Dynamic Font Sizes: Big & Bold for Highlighted Nodes
+    const labelFontSize = n.isHighlighted ? fontSize * 24 : fontSize * 14
+    const labelFontWeight = n.isHighlighted ? "bold" : "normal"
 
     const label = new Text({
       interactive: false,
       eventMode: "none",
       text: displayTitle,
-      alpha: n.isHighlighted ? 0.8 : 0, // Highlighted nodes are always visible initially
-      anchor: { x: 0.5, y: 1.2 },
+      alpha: n.isHighlighted ? 0.9 : 0,
+      anchor: { x: 0.5, y: 0 }, // Center horizontally, flow downwards from anchor
       style: {
-        fontSize: fontSize * 15,
+        fontSize: labelFontSize,
+        fontWeight: labelFontWeight,
         fill: computedStyleMap["--dark"],
         fontFamily: computedStyleMap["--bodyFont"],
       },
@@ -527,7 +540,6 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
           let scaleOpacity = Math.max((scale - 1) / 3.75, 0)
           const activeNodes = nodeRenderData.filter((n) => n.active).flatMap((n) => n.label)
 
-          // 7. Zoom logic updated: Keep highlighted labels visible even when zoomed out
           for (const node of nodeRenderData) {
             const label = node.label
             if (!activeNodes.includes(label)) {
@@ -542,9 +554,15 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
     for (const n of nodeRenderData) {
       const { x, y } = n.simulationData
       if (!x || !y) continue
+
+      // Update graphics position
       n.gfx.position.set(x + width / 2, y + height / 2)
+
       if (n.label) {
-        n.label.position.set(x + width / 2, y + height / 2)
+        // Dynamic Label Placement: Pushes the label just outside the node's radius
+        const radius = nodeRadius(n.simulationData)
+        const verticalPadding = n.simulationData.isHighlighted ? 8 : 4
+        n.label.position.set(x + width / 2, y + height / 2 + radius + verticalPadding)
       }
     }
 
