@@ -26,10 +26,12 @@ type GraphicsInfo = {
   active: boolean
 }
 
+// 1. We added the 'isHighlighted' flag to the NodeData type
 type NodeData = {
   id: SimpleSlug
   text: string
   tags: string[]
+  isHighlighted: boolean
 } & SimulationNodeDatum
 
 type SimpleLinkData = {
@@ -89,6 +91,18 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
     focusOnHover,
   } = JSON.parse(graph.dataset["cfg"]!) as D3Config
 
+  // 2. Here are all the keywords pulled from your application and expanded upon
+  const highlightKeywords = [
+    "ai safety", "alignment", "mats", "scalable oversight", "mechanistic interpretability", 
+    "sae", "probes", "dictionary learning", "cross-layer transcoders", "activation oracles",
+    "activation steering", "bliss attractor", "theory of mind", "welfare", "consciousness",
+    "red team", "evaluations", "white-box", "attribution graphs", "agentic", "formal verification",
+    "formal methods", "adversarial robustness", "deductive synthesis", "syntax-aligned",
+    "probability theory", "singular learning theory", "statistics", "optimization", 
+    "linear algebra", "logic", "proof theory", "bayesian inference", "information theory", 
+    "kolmogorov-arnold networks", "kans", "markov chains", "deep neural networks", "advanced ml"
+  ]
+
   const data: Map<SimpleSlug, ContentDetails> = new Map(
     Object.entries<ContentDetails>(await fetchData).map(([k, v]) => [
       simplifySlug(k as FullSlug),
@@ -126,7 +140,6 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
   const wl: (SimpleSlug | "__SENTINEL")[] = [slug, "__SENTINEL"]
   if (depth >= 0) {
     while (depth >= 0 && wl.length > 0) {
-      // compute neighbours
       const cur = wl.shift()!
       if (cur === "__SENTINEL") {
         depth--
@@ -143,14 +156,20 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
     if (showTags) tags.forEach((tag) => neighbourhood.add(tag))
   }
 
+  // 3. We check if the node text includes any of your keywords
   const nodes = [...neighbourhood].map((url) => {
     const text = url.startsWith("tags/") ? "#" + url.substring(5) : (data.get(url)?.title ?? url)
+    const textLower = text.toLowerCase()
+    const isHighlighted = highlightKeywords.some(kw => textLower.includes(kw))
+    
     return {
       id: url,
       text,
       tags: data.get(url)?.tags ?? [],
+      isHighlighted
     }
   })
+  
   const graphData: { nodes: NodeData[]; links: LinkData[] } = {
     nodes,
     links: links
@@ -161,7 +180,6 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
       })),
   }
 
-  // we virtualize the simulation and use pixi to actually render it
   const simulation: Simulation<NodeData, LinkData> = forceSimulation<NodeData>(graphData.nodes)
     .force("charge", forceManyBody().strength(-100 * repelForce))
     .force("center", forceCenter().strength(centerForce))
@@ -171,7 +189,6 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
   const width = graph.offsetWidth
   const height = Math.max(graph.offsetHeight, 250)
 
-  // precompute style prop strings as pixi doesn't support css variables
   const cssVars = [
     "--secondary",
     "--tertiary",
@@ -190,11 +207,13 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
     {} as Record<(typeof cssVars)[number], string>,
   )
 
-  // calculate color
+  // 4. Color logic updated: Highlights get the --dark theme variable to stand out nicely
   const color = (d: NodeData) => {
     const isCurrent = d.id === slug
     if (isCurrent) {
       return computedStyleMap["--secondary"]
+    } else if (d.isHighlighted) {
+      return computedStyleMap["--dark"] 
     } else if (visited.has(d.id) || d.id.startsWith("tags/")) {
       return computedStyleMap["--tertiary"]
     } else {
@@ -202,17 +221,20 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
     }
   }
 
+  // 5. Radius logic updated: Highlighted nodes are multiplied by 1.6
   function nodeRadius(d: NodeData) {
     const numLinks = graphData.links.filter(
       (l) => l.source.id === d.id || l.target.id === d.id,
     ).length
-    return 2 + Math.sqrt(numLinks)
+    const base = 2 + Math.sqrt(numLinks)
+    return d.isHighlighted ? base * 1.6 : base
   }
 
   let hoveredNodeId: string | null = null
   let hoveredNeighbours: Set<string> = new Set()
   const linkRenderData: LinkRenderData[] = []
   const nodeRenderData: NodeRenderData[] = []
+  
   function updateHoverInfo(newHoveredId: string | null) {
     hoveredNodeId = newHoveredId
 
@@ -252,13 +274,9 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
 
     for (const l of linkRenderData) {
       let alpha = 1
-
-      // if we are hovering over a node, we want to highlight the immediate neighbours
-      // with full alpha and the rest with default alpha
       if (hoveredNodeId) {
         alpha = l.active ? 1 : 0.2
       }
-
       l.color = l.active ? computedStyleMap["--gray"] : computedStyleMap["--lightgray"]
       tweenGroup.add(new Tweened<LinkRenderData>(l).to({ alpha }, 200))
     }
@@ -319,12 +337,9 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
     const tweenGroup = new TweenGroup()
     for (const n of nodeRenderData) {
       let alpha = 1
-
-      // if we are hovering over a node, we want to highlight the immediate neighbours
       if (hoveredNodeId !== null && focusOnHover) {
         alpha = n.active ? 1 : 0.2
       }
-
       tweenGroup.add(new Tweened<Graphics>(n.gfx, tweenGroup).to({ alpha }, 200))
     }
 
@@ -371,11 +386,17 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
   for (const n of graphData.nodes) {
     const nodeId = n.id
 
+    // 6. Text formatting: If highlighted, limit to 15 characters
+    let displayTitle = n.text
+    if (n.isHighlighted && displayTitle.length > 15) {
+      displayTitle = displayTitle.substring(0, 15) + "..."
+    }
+
     const label = new Text({
       interactive: false,
       eventMode: "none",
-      text: n.text,
-      alpha: 0,
+      text: displayTitle,
+      alpha: n.isHighlighted ? 0.8 : 0, // Highlighted nodes are always visible initially
       anchor: { x: 0.5, y: 1.2 },
       style: {
         fontSize: fontSize * 15,
@@ -473,7 +494,6 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
           event.subject.fy = null
           dragging = false
 
-          // if the time between mousedown and mouseup is short, we consider it a click
           if (Date.now() - dragStartTime < 500) {
             const node = graphData.nodes.find((n) => n.id === event.subject.id) as NodeData
             const targ = resolveRelative(fullSlug, node.id)
@@ -503,14 +523,15 @@ async function renderGraph(container: string, fullSlug: FullSlug) {
           stage.scale.set(transform.k, transform.k)
           stage.position.set(transform.x, transform.y)
 
-          // zoom adjusts opacity of labels too
           const scale = transform.k * opacityScale
           let scaleOpacity = Math.max((scale - 1) / 3.75, 0)
           const activeNodes = nodeRenderData.filter((n) => n.active).flatMap((n) => n.label)
 
-          for (const label of labelsContainer.children) {
+          // 7. Zoom logic updated: Keep highlighted labels visible even when zoomed out
+          for (const node of nodeRenderData) {
+            const label = node.label
             if (!activeNodes.includes(label)) {
-              label.alpha = scaleOpacity
+              label.alpha = node.simulationData.isHighlighted ? Math.max(0.7, scaleOpacity) : scaleOpacity
             }
           }
         }),
@@ -550,15 +571,12 @@ document.addEventListener("nav", async (e: CustomEventMap["nav"]) => {
   addToVisited(simplifySlug(slug))
   await renderGraph("graph-container", slug)
 
-  // Function to re-render the graph when the theme changes
   const handleThemeChange = () => {
     renderGraph("graph-container", slug)
   }
 
-  // event listener for theme change
   document.addEventListener("themechange", handleThemeChange)
 
-  // cleanup for the event listener
   window.addCleanup(() => {
     document.removeEventListener("themechange", handleThemeChange)
   })
